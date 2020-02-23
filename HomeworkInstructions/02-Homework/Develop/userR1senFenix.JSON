@@ -9,5 +9,6 @@
 	"pubRepo": 12,
 	"follower": 1,
 	"stars": "https://api.github.com/users/R1senFenix/starred{/owner}{/repo}",
-	"following": 4
+	"following": 4,
+	"getColor": "green"
 }

@@ -1,10 +1,10 @@
 const inquirer = require("inquirer");
 const axios = require("axios");
 const fs = require('fs');
-const generateHTML = require("./generateHTML.js");
+const generateHTML = require('./generateHTML.js');
 
 class PersonInfo {
-    constructor(personName, profileImg, username, location, profile, blog, bio, pubRepo, follower, stars, following) {
+    constructor(personName, profileImg, username, location, profile, blog, bio, pubRepo, follower, stars, following, getColor) {
         this.personName = personName;
         this.profileImg = profileImg;
         this.username = username;
@@ -16,6 +16,7 @@ class PersonInfo {
         this.follower = follower;
         this.stars = stars;
         this.following = following;
+        this.getColor = getColor;
     }
 }
 
@@ -76,10 +77,10 @@ inquirer.prompt([
         //number following
         following = personResults.data.following;
         //console.log(following);
-        //console.log(data.customColor);
+        getColor = data.customColor;
 
-        personObject = new PersonInfo(personName, profileImg, username, location, profile, blog, bio, pubRepo, follower, stars, following);
-        console.log(personObject);
+        personObject = new PersonInfo(personName, profileImg, username, location, profile, blog, bio, pubRepo, follower, stars, following, getColor);
+
         fs.writeFile(`user${username}.JSON`, JSON.stringify(personObject, null, '\t'), function (err) {
 
             if (err) {
@@ -88,11 +89,12 @@ inquirer.prompt([
 
             console.log("Success!");
 
-        });
+        })
 
-    }).then(function{
-        generateHTML(data.customColors)
-    })
+        const HTMLFile = generateHTML(personObject);
+        console.log(HTMLFile);
+
+    });
+})
 
 
-});

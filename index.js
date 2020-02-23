@@ -1,8 +1,8 @@
-const inquirer = require("inquirer");
-const axios = require("axios");
+const inquirer = require("./Assets/node_modules/inquirer");
+const axios = require("./Assets/node_modules/axios");
 const fs = require('fs');
-const generateHTML = require('./generateHTML.js');
-var pdf = require('html-pdf');
+const generateHTML = require('./Assets/generateHTML.js');
+var pdf = require('./Assets/node_modules/html-pdf');
 
 
 

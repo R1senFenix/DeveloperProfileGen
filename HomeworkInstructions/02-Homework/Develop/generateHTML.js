@@ -3,7 +3,7 @@ const colors = {
     wrapperBackground: "#E6E1C3",
     headerBackground: "#C1C72C",
     headerColor: "black",
-    photoBorderColor: "#black"
+    photoBorderColor: "black"
   },
   blue: {
     wrapperBackground: "#5F64D3",
@@ -170,5 +170,50 @@ function generateHTML(data) {
             zoom: .75; 
           } 
          }
-      </style>`
-        }
+      </style>
+      </head>
+  <body>
+    <div class="wrapper">
+      <div class="photo-header">
+        <img src="https://avatars2.githubusercontent.com/u/57119902?v=4" />
+
+        <h1>Hi!</h1>
+        <h1>My name is Jamison Stramer!</h1>
+        <h5>Currently at home</h5>
+        <div class="links-nav">
+          <a class="nav-link" href="#">location</a>
+          <a class="nav-link" href="#">GitHub</a>
+          <a class="nav-link" href="#">blog</a>
+        </div>
+      </div>
+      <div class="main">
+        <div class="container">
+          <h2>I build things and teach people to code.</h2>
+          <div class="row">
+            <div class="card col">
+              <h3>Public Repositories</h3>
+              <h4>135</h4>
+            </div>
+            <div class="card col">
+              <h3>Followers</h3>
+              <h4>92</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card col">
+              <h3>GitHub Stars</h3>
+              <h4>65</h4>
+            </div>
+            <div class="card col">
+              <h3>Following</h3>
+              <h4>65</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>`
+}
+
+module.exports = generateHTML;

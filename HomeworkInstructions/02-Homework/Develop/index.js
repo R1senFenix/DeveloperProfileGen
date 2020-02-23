@@ -2,6 +2,9 @@ const inquirer = require("inquirer");
 const axios = require("axios");
 const fs = require('fs');
 const generateHTML = require('./generateHTML.js');
+var pdf = require('html-pdf');
+
+
 
 class PersonInfo {
     constructor(personName, profileImg, username, location, profile, blog, bio, pubRepo, follower, stars, following, getColor) {
@@ -81,7 +84,21 @@ inquirer.prompt([
 
         personObject = new PersonInfo(personName, profileImg, username, location, profile, blog, bio, pubRepo, follower, stars, following, getColor);
 
+        //JSON file so i can see the object whenever
         fs.writeFile(`user${username}.JSON`, JSON.stringify(personObject, null, '\t'), function (err) {
+
+            if (err) {
+                return console.log(err);
+            }
+
+            console.log("New JSON Available!");
+
+        })
+
+        const HTMLFile = generateHTML(personObject);
+        console.log(personObject);
+
+        fs.writeFile(`user${username}.HTML`, HTMLFile, function (err) {
 
             if (err) {
                 return console.log(err);
@@ -89,10 +106,17 @@ inquirer.prompt([
 
             console.log("Success!");
 
-        })
+            //make into pdf
+            var html = fs.readFileSync(`user${username}.HTML`, 'utf8');
+            var options = { format: 'Letter' };
 
-        const HTMLFile = generateHTML(personObject);
-        console.log(HTMLFile);
+            pdf.create(html, options).toFile(`user${username}.pdf`, function (err, res) {
+                if (err) return console.log(err);
+                console.log(res); // { filename: '/app/businesscard.pdf' }
+            });
+
+
+        })
 
     });
 })

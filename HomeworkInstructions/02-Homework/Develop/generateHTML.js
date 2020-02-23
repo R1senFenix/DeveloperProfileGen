@@ -176,38 +176,38 @@ function generateHTML(data) {
   <body>
     <div class="wrapper">
       <div class="photo-header">
-        <img src="https://avatars2.githubusercontent.com/u/57119902?v=4" />
+        <img src="${data.profileImg}" />
 
         <h1>Hi!</h1>
         <h1>My name is ${data.personName}!</h1>
-        <h5>Currently at home</h5>
+        <h5>My GitHub username is ${data.username}</h5>
         <div class="links-nav">
-          <a class="nav-link" href="#">location</a>
-          <a class="nav-link" href="#">GitHub</a>
-          <a class="nav-link" href="#">blog</a>
+          <a class="nav-link" href="${data.location}">${data.location}</a>
+          <a class="nav-link" href="${data.profile}">GitHub</a>
+          <a class="nav-link" href="${data.blog}">blog</a>
         </div>
       </div>
       <div class="main">
         <div class="container">
-          <h2>I build things and teach people to code.</h2>
+          <h2>${data.bio}</h2>
           <div class="row">
             <div class="card col">
               <h3>Public Repositories</h3>
-              <h4>135</h4>
+              <h4>${data.pubRepo}</h4>
             </div>
             <div class="card col">
               <h3>Followers</h3>
-              <h4>92</h4>
+              <h4>${data.follower}</h4>
             </div>
           </div>
           <div class="row">
             <div class="card col">
               <h3>GitHub Stars</h3>
-              <h4>65</h4>
+              <h4>${data.stars}</h4>
             </div>
             <div class="card col">
               <h3>Following</h3>
-              <h4>65</h4>
+              <h4>${data.following}</h4>
             </div>
           </div>
         </div>
